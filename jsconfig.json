@@ -4,7 +4,7 @@
       "allowSyntheticDefaultImports": false,
       "baseUrl": "./",
       "paths": {
-        "@app/*": ["src/components/*"]
+        "@app/*": ["src/*"]
       }
     },
     "exclude": ["node_modules", "dist"]

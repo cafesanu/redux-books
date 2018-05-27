@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
+import {App} from './components/app';
+import {rootReducer} from '@app/reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const store = createStore(rootReducer, /* preloadedState, */ composeWithDevTools(
+    applyMiddleware()
+));
+
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+    <Provider store = {store}>
+        <App />
+    </Provider>, document.querySelector('.container'));
